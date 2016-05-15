@@ -1,0 +1,50 @@
+use mysql;
+UPDATE user SET Password = PASSWORD('123456') WHERE user = 'root';
+FLUSH PRIVILEGES;
+create database test CHARACTER set utf8;
+use test;
+create table qt_user(
+  id int(10) primary key auto_increment,
+  name varchar(20),
+  password varchar(20),
+  sex varchar(10),
+  contact varchar(20),
+  address varchar(50)
+);
+insert into qt_user (name,password,sex,contact,address) values('小明1','123','男','6888@qq.emai/138***','新世界2号线34站');
+insert into qt_user (name,password,sex,contact,address) values('小明2','1234','男','6888@qq.emai/138***','新世界2号线34站');
+insert into qt_user (name,password,sex,contact,address) values('小明3','12345','男','6888@qq.emai/138***','新世界2号线34站');
+
+create table qt_activityType(
+  id int(10) primary key auto_increment,
+  name varchar(20)
+);
+
+
+
+create table qt_partIn(
+  id int(10) primary key auto_increment,
+  activityId int(10),
+  userId int(10),
+  publicUserId int(10),
+  activityTypeId int(10)
+);
+
+
+
+create table qt_activity(
+  id int(10) primary key auto_increment,
+  publicUserId int(10),
+  theme varchar(50),
+  content varchar(500),
+  contact varchar(50),
+  activityTypeId int(10),
+  time datetime,
+  startTime date,
+  endTime date,
+  img varchar(50),
+  link varchar(200),
+  limitNumber int(20),
+  address varchar(50),
+  sum int(20)
+);

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <classPathEntry location="D:\ideaIC\workspace\mysql-connector-java-5.1.36.jar" />
+
+    <context id="MyBatis3" targetRuntime="MyBatis3">
+
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+
+        <!--url后面的后面记得加上决解编码格式的方法-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/test?useUnicode=true&amp;autoReconnect=true&amp;characterEncoding=UTF-8" userId="root"
+                        password="123456" />
+
+        <javaModelGenerator targetPackage="com.test.model"
+                            targetProject="D:\ideaIC\workspace\happy01\src\main\java">
+            <property name="enableSubPackages" value="true" />
+        </javaModelGenerator>
+
+        <!--注意路径，不然利用mybatis的自动扫描功能可能找不到-->
+        <sqlMapGenerator targetPackage="com.test.map"
+                         targetProject="D:\ideaIC\workspace\happy01\src\main\resources">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+        <!-- XMLMAPPER SPRING -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.test.dao" targetProject="D:\ideaIC\workspace\happy01\src\main\java">
+        </javaClientGenerator>
+
+
+        <table tableName="qt_user">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true" />
+        </table>
+
+        <table tableName="qt_activityType">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
+        </table>
+
+        <table tableName="qt_partIn">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
+        </table>
+
+        <table tableName="qt_activity">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
+        </table>
+
+    </context>
+</generatorConfiguration>
